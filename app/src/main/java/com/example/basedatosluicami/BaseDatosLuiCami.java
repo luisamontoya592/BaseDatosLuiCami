@@ -15,20 +15,22 @@ public class BaseDatosLuiCami extends SQLiteOpenHelper {
         super(context, name, factory, version );
     }
 
-
     @Override
     public void onCreate(SQLiteDatabase dataBase) {
+
         dataBase.execSQL("create table Cliente(IdCliente int primary key, " +
-                "NombreCliente text, DireccionCliente text, TelefonoCliente text )");
+                "IdPedido int,IdFactura int,NombreCliente text, DireccionCliente text, TelefonoCliente text," +
+                "Foreign key (IdPedido) references Pedido(IdPedido) ON DELETE CASCADE ON UPDATE CASCADE," +
+                "Foreign key (IdFactura) references Factura(IdFactura) ON DELETE CASCADE ON UPDATE CASCADE)");
 
         dataBase.execSQL("create table Producto(IdProducto int primary key, " +
-                "IdPedido int, NombreProducto text, ValorProducto float, FabricanteProducto text," +
-                "Foreign key (IdPedido) references Pedido(IdPedido) ON DELETE CASCADE ON UPDATE CASCADE)");
+                "NombreProducto text, ValorProducto float, FabricanteProducto text)");
 
         dataBase.execSQL("create table Pedido(IdPedido int primary key, " +
-                "IdCliente int, IdProducto int, CantidadPedido int, ValorPedido float, FechaPedido datetime, " +
+                "IdCliente int, IdProducto int, IdFactura int,CantidadPedido int, ValorPedido float, FechaPedido datetime, " +
                 "Foreign key (IdCliente) references Cliente(IdCliente) ON DELETE CASCADE ON UPDATE CASCADE, " +
-                "Foreign key (IdProducto) references Producto(IdProducto)ON DELETE CASCADE ON UPDATE CASCADE)");
+                "Foreign key (IdProducto) references Producto(IdProducto)ON DELETE CASCADE ON UPDATE CASCADE," +
+                "Foreign key (IdFactura) references Factura(IdFactura) ON DELETE CASCADE ON UPDATE CASCADE)");
 
         dataBase.execSQL("create table Factura(IdFactura int primary key, " +
                 "IdPedido int, ValorFactura float, FechaFactura datetime, ObservacionFactura text," +
@@ -38,22 +40,25 @@ public class BaseDatosLuiCami extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase dataBase, int version, int newVersion) {
-        dataBase.execSQL("drop table if exists cliente");
+
+        dataBase.execSQL("drop table if exists Cliente");
         dataBase.execSQL("create table Cliente(IdCliente int primary key, " +
-                "NombreCliente text, DireccionCliente text, TelefonoCliente text )");
+                "IdPedido int,IdFactura int,NombreCliente text, DireccionCliente text, TelefonoCliente text," +
+                "Foreign key (IdPedido) references Pedido(IdPedido) ON DELETE CASCADE ON UPDATE CASCADE," +
+                "Foreign key (IdFactura) references Factura(IdFactura) ON DELETE CASCADE ON UPDATE CASCADE)");
 
-        dataBase.execSQL("drop table if exists producto");
+        dataBase.execSQL("drop table if exists Producto");
         dataBase.execSQL("create table Producto(IdProducto int primary key, " +
-                "IdPedido int, NombreProducto text, ValorProducto float, FabricanteProducto text," +
-                "Foreign key (IdPedido) references Pedido(IdPedido) ON DELETE CASCADE ON UPDATE CASCADE)");
+                "NombreProducto text, ValorProducto float, FabricanteProducto text)");
 
-        dataBase.execSQL("drop table if exists pedido");
+        dataBase.execSQL("drop table if exists Pedido");
         dataBase.execSQL("create table Pedido(IdPedido int primary key, " +
-                "IdCliente int, IdProducto int, CantidadPedido int, ValorPedido float, fecha datetime, " +
+                "IdCliente int, IdProducto int, IdFactura int,CantidadPedido int, ValorPedido float, FechaPedido datetime, " +
                 "Foreign key (IdCliente) references Cliente(IdCliente) ON DELETE CASCADE ON UPDATE CASCADE, " +
-                "Foreign key (IdProducto) references Producto(IdProducto)ON DELETE CASCADE ON UPDATE CASCADE)");
+                "Foreign key (IdProducto) references Producto(IdProducto)ON DELETE CASCADE ON UPDATE CASCADE," +
+                "Foreign key (IdFactura) references Factura(IdFactura) ON DELETE CASCADE ON UPDATE CASCADE)");
 
-        dataBase.execSQL("drop table if exists factura");
+        dataBase.execSQL("drop table if exists Factura");
         dataBase.execSQL("create table Factura(IdFactura int primary key, " +
                 "IdPedido int, ValorFactura float, FechaFactura datetime, ObservacionFactura text," +
                 "Foreign key (IdPedido) references Pedido(IdPedido)ON DELETE CASCADE ON UPDATE CASCADE)");
