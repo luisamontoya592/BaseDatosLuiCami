@@ -3,7 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/fermo/AndroidStudioProjects/BaseDatosLuiCami/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/fermo/AndroidStudioProjects/BaseDatosLuiCami/app/src/main/res/layout/activity_buscar_pedido.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/fermo/AndroidStudioProjects/BaseDatosLuiCami/app/src/main/res/layout/activity_clientes.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/fermo/AndroidStudioProjects/BaseDatosLuiCami/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/Users/fermo/AndroidStudioProjects/BaseDatosLuiCami/app/src/main/res/layout/activity_nuevo_pedido.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/fermo/AndroidStudioProjects/BaseDatosLuiCami/app/src/main/res/layout/activity_pedido.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/fermo/AndroidStudioProjects/BaseDatosLuiCami/app/src/main/res/layout/activity_pedidos.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/fermo/AndroidStudioProjects/BaseDatosLuiCami/app/src/main/res/layout/activity_productos.xml" value="0.264" />
       </map>
     </option>
   </component>
