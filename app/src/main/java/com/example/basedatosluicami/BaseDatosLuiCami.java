@@ -19,17 +19,17 @@ public class BaseDatosLuiCami extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase dataBase) {
 
-        dataBase.execSQL("create table Cliente(IdCliente int primary key, " +
+        dataBase.execSQL("create table Cliente(IdCliente int primary key," +
                 "NombreCliente text, DireccionCliente text, TelefonoCliente text)");
 
-        dataBase.execSQL("create table Producto(IdProducto int primary key, " +
+        dataBase.execSQL("create table Producto(IdProducto int primary key," +
                 "NombreProducto text, ValorProducto real, FabricanteProducto text)");
 
-        dataBase.execSQL("create table Pedido(IdPedido int primary key, " +
+        dataBase.execSQL("create table Pedido(IdPedido int primary key," +
                 "IdCliente int, DescripcionPedido text, FechaPedido text, " +
                 "Foreign key (IdCliente) references Cliente(IdCliente) ON DELETE CASCADE ON UPDATE CASCADE)");
 
-        dataBase.execSQL("create table Factura(IdFactura int primary key, " +
+        dataBase.execSQL("create table Factura(IdFactura int primary key," +
                 "IdCliente int, IdProducto int, IdPedido int,ValorFactura real, FechaFactura text," +
                 "Foreign key (IdCliente) references Cliente(IdCliente) ON DELETE CASCADE ON UPDATE CASCADE, " +
                 "Foreign key (IdProducto) references Producto(IdProducto)ON DELETE CASCADE ON UPDATE CASCADE," +
