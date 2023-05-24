@@ -23,13 +23,13 @@ public class BaseDatosLuiCami extends SQLiteOpenHelper {
                 "NombreCliente text, DireccionCliente text, TelefonoCliente text)");
 
         dataBase.execSQL("create table Producto(IdProducto int primary key, " +
-                "NombreProducto text, ValorProducto float, FabricanteProducto text)");
+                "NombreProducto text, ValorProducto real, FabricanteProducto text)");
 
         dataBase.execSQL("create table Pedido(IdPedido int primary key, " +
                 "IdCliente int, DescripcionPedido text, FechaPedido text, " +
                 "Foreign key (IdCliente) references Cliente(IdCliente) ON DELETE CASCADE ON UPDATE CASCADE)");
 
-        dataBase.execSQL("create table Factura(IdFactura int primary key autoincrement, " +
+        dataBase.execSQL("create table Factura(IdFactura int primary key, " +
                 "IdCliente int, IdProducto int, IdPedido int,ValorFactura real, FechaFactura text," +
                 "Foreign key (IdCliente) references Cliente(IdCliente) ON DELETE CASCADE ON UPDATE CASCADE, " +
                 "Foreign key (IdProducto) references Producto(IdProducto)ON DELETE CASCADE ON UPDATE CASCADE," +
@@ -47,7 +47,7 @@ public class BaseDatosLuiCami extends SQLiteOpenHelper {
 
         dataBase.execSQL("drop table if exists Producto");
         dataBase.execSQL("create table Producto(IdProducto int primary key, " +
-                "NombreProducto text, ValorProducto float, FabricanteProducto text)");
+                "NombreProducto text, ValorProducto real, FabricanteProducto text)");
 
 
         dataBase.execSQL("drop table if exists Pedido");
@@ -57,7 +57,7 @@ public class BaseDatosLuiCami extends SQLiteOpenHelper {
 
 
         dataBase.execSQL("drop table if exists Factura");
-        dataBase.execSQL("create table Factura(IdFactura int primary key autoincrement, " +
+        dataBase.execSQL("create table Factura(IdFactura int primary key," +
                 "IdCliente int, IdProducto int, IdPedido int,ValorFactura real, FechaFactura text," +
                 "Foreign key (IdCliente) references Cliente(IdCliente) ON DELETE CASCADE ON UPDATE CASCADE, " +
                 "Foreign key (IdProducto) references Producto(IdProducto)ON DELETE CASCADE ON UPDATE CASCADE," +
