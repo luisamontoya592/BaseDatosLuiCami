@@ -41,17 +41,17 @@ public class BaseDatosLuiCami extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase dataBase, int version, int newVersion) {
 
         dataBase.execSQL("drop table if exists Cliente");
-        dataBase.execSQL("create table Cliente(IdCliente int primary key, " +
+        dataBase.execSQL("create table Cliente(IdCliente int primary key," +
                 "NombreCliente text, DireccionCliente text, TelefonoCliente text)");
 
 
         dataBase.execSQL("drop table if exists Producto");
-        dataBase.execSQL("create table Producto(IdProducto int primary key, " +
+        dataBase.execSQL("create table Producto(IdProducto int primary key," +
                 "NombreProducto text, ValorProducto real, FabricanteProducto text)");
 
 
         dataBase.execSQL("drop table if exists Pedido");
-        dataBase.execSQL("create table Pedido(IdPedido int primary key, " +
+        dataBase.execSQL("create table Pedido(IdPedido int primary key," +
                 "IdCliente int, DescripcionPedido text, FechaPedido text, " +
                 "Foreign key (IdCliente) references Cliente(IdCliente) ON DELETE CASCADE ON UPDATE CASCADE)");
 
